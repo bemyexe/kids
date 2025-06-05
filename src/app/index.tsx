@@ -1,3 +1,10 @@
+import { Typography } from '../shared/ui/typography';
+
 export const App = () => {
-  return <>app</>;
+  return (
+    <>
+      app
+      <Typography>HELLO</Typography>
+    </>
+  );
 };
