@@ -1,11 +1,11 @@
-import { type InputHTMLAttributes, useId } from 'react';
+import { type ComponentProps, useId } from 'react';
 import clsx from 'clsx';
 
 import './style.scss';
 
 type LabelSize = '12' | '14';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+interface Props extends ComponentProps<'input'> {
   name: string;
   labelSize?: LabelSize;
   label: string;
