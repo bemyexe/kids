@@ -12,7 +12,12 @@
   font-style: normal;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Circe Rounded', sans-serif;
-  padding: 10px;
 }
