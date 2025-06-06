@@ -1,0 +1,18 @@
+.textarea-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__textarea {
+    border: 1px solid var(--muted);
+    border-radius: 6px;
+    padding: 10px 12px;
+    resize: none;
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      border-color: var(--violet-110);
+      outline: none;
+    }
+  }
+}
