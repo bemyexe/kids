@@ -4,9 +4,11 @@ import { Button } from '../../../shared/ui/button';
 import { Chip } from '../../../shared/ui/chip';
 import { Typography } from '../../../shared/ui/typography';
 
+import './style.scss';
+
 export const UploadPage = () => {
   return (
-    <div>
+    <div className="upload-page">
       <Typography tag="h3" size="20">
         Загрузите фотографии рисунков
       </Typography>

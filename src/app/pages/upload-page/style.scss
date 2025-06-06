@@ -1,0 +1,7 @@
+@use '/src/global-styles/mixins.scss' as mixins;
+
+.upload-page {
+  height: 100vh;
+
+  @include mixins.container-width;
+}
