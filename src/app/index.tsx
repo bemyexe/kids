@@ -26,7 +26,14 @@ export const App = () => {
       <RightDoubleArrow stroke="red" />
       <Download stroke="red" />
       <Export stroke="red" />
-      <Button type="button">Submit</Button>
+      <Button
+        letfIcon={<LeftArrow stroke="white" />}
+        rightIcon={<RightArrow stroke="white" />}
+        type="button"
+        disabled
+      >
+        Submit
+      </Button>
     </>
   );
 };
