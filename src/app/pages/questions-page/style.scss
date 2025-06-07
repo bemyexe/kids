@@ -1,0 +1,7 @@
+@use '/src/global-styles/mixins.scss' as mixins;
+
+.questions-page {
+  height: 100vh;
+
+  @include mixins.container-width;
+}

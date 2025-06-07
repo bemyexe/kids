@@ -1,4 +1,5 @@
 import {useForm} from 'react-hook-form';
+import {useNavigate} from 'react-router';
 
 import ExclamationMarkIcon from '../../../assets/exclamation-mark.svg?react';
 import RightIcon from '../../../assets/right-arrow.svg?react';
@@ -31,10 +32,14 @@ export const UploadPage = () => {
   const nonexistentAnimal = watch('nonexistentAnimal');
   const selfPortrait = watch('selfPortrait');
 
+  const navigate = useNavigate();
+
+  const handleClick = () => navigate('/questions');
+
   return (
     <main className="upload-page">
       <div className="upload-page__top">
-        <Typography tag="h3" size="20">
+        <Typography tag="h3" size="20" weight="bold">
           Загрузите фотографии рисунков
         </Typography>
         <Chip
@@ -71,6 +76,8 @@ export const UploadPage = () => {
         </Typography>
         <Button
           rightIcon={<RightIcon stroke={isValid ? 'white' : '#44537180'} />}
+          type="button"
+          onClick={handleClick}
           disabled={!isValid}>
           Далее
         </Button>
