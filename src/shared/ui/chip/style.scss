@@ -4,6 +4,7 @@
   border-radius: 18px;
   align-items: center;
   gap: 8px;
+  width: fit-content;
 
   &.warning {
     background-color: var(--red-050);

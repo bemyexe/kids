@@ -18,7 +18,8 @@
 
 @mixin container-width {
   max-width: 904px;
-
+  width: 100%;
+  margin: 0 auto;
   @include tablet {
     max-width: 600px;
   }
