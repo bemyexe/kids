@@ -4,4 +4,21 @@
   height: 100vh;
 
   @include mixins.container-width;
+
+  &__content {
+    max-width: 776px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+
+    &-top {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      &-title {
+        padding-bottom: 8px;
+      }
+    }
+  }
 }
