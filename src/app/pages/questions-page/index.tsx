@@ -1,8 +1,10 @@
 import {useState} from 'react';
+import {useSelector} from 'react-redux';
 import clsx from 'clsx';
 
 import {RadioButtonGroup} from '../../../shared/components/radio-button-group';
 import {SectionQuestions} from '../../../shared/components/section-questions';
+import {uploadSelectors} from '../../../shared/model/store/upload/upload.selectors';
 import {Input} from '../../../shared/ui/input';
 import {TextArea} from '../../../shared/ui/textarea';
 import {Typography} from '../../../shared/ui/typography';
@@ -37,7 +39,8 @@ const EVALUATION_OPTIONS = [
 export const QuestionsPage = ({className}: Props) => {
   const [gender, setGender] = useState<string>('');
   const [frequency, setFrequency] = useState<string>('');
-
+  const taskId = useSelector(uploadSelectors.selectTaskId);
+  console.log(taskId);
   return (
     <main className={clsx('questions-page', className)}>
       <div className="questions-page__content">

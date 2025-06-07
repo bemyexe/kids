@@ -29,4 +29,8 @@
       color: var(--muted);
     }
   }
+
+  &__error {
+    color: var(--red-110);
+  }
 }
