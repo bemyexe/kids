@@ -1,25 +1,32 @@
-.upload {
+.upload-container {
   display: flex;
   flex-direction: column;
+  max-width: 216px;
+  max-height: 191px;
+  height: 100%;
+  width: 100%;
   align-items: center;
-
-  &__label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  gap: 8px;
+  &__wrapper {
+    background-color: var(--surface-3);
     max-width: 216px;
     max-height: 161px;
     width: 100%;
     height: 100%;
-    background-color: var(--surface-3);
-    cursor: pointer;
-    &-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+
+    &-icon {
+      width: 48px;
+      height: 48px;
       background-color: var(--blue-050);
-      padding: 10px;
       border-radius: 8px;
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
     }
   }
 }
