@@ -2,8 +2,8 @@ import {createRoot} from 'react-dom/client';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route, Routes} from 'react-router';
 
-import {QuestionsPage} from './app/pages/questions-page';
 import {StartPage} from './app/pages/start-page';
+import {SurveyPage} from './app/pages/survey-page';
 import {UploadPage} from './app/pages/upload-page';
 import {ROUTES} from './shared/model/routes';
 import {store} from './shared/model/store/store';
@@ -18,7 +18,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path={ROUTES.START} element={<StartPage />} />
         <Route path={ROUTES.UPLOAD} element={<UploadPage />} />
-        <Route path={ROUTES.QUESTIONS} element={<QuestionsPage />} />
+        <Route path={ROUTES.QUESTIONS} element={<SurveyPage />} />
       </Routes>
     </Provider>
   </BrowserRouter>
