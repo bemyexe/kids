@@ -66,7 +66,7 @@ export const Upload = ({label, file, className, ...props}: Props) => {
           />
         </label>
       </div>
-      <Typography>{label}</Typography>
+      <Typography className="upload-container__label">{label}</Typography>
     </div>
   );
 };

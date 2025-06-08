@@ -19,6 +19,13 @@
     justify-content: space-between;
     max-height: 191px;
     height: 100%;
+    gap: 5px;
+
+    @include mixins.mobile {
+      flex-direction: column;
+      max-height: 314px;
+      align-items: center;
+    }
   }
 
   &__error {

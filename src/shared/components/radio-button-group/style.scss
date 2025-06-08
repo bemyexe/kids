@@ -1,3 +1,5 @@
+@use '/src/global-styles/mixins.scss' as mixins;
+
 .radio-button-group {
   display: flex;
   flex-direction: column;
@@ -6,5 +8,10 @@
   &__options {
     display: flex;
     gap: 24px;
+    flex-wrap: wrap;
+    @include mixins.mobile {
+      flex-direction: column;
+      gap: 8px;
+    }
   }
 }
