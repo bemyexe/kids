@@ -21,15 +21,6 @@
     height: 100%;
   }
 
-  &__bottom {
-    display: flex;
-    justify-content: space-between;
-
-    &-text {
-      color: var(--muted);
-    }
-  }
-
   &__error {
     color: var(--red-110);
   }

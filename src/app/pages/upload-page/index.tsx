@@ -4,11 +4,12 @@ import {useSelector} from 'react-redux';
 import {useNavigate} from 'react-router';
 
 import ExclamationMarkIcon from '../../../assets/exclamation-mark.svg?react';
-import RightIcon from '../../../assets/right-arrow.svg?react';
+import {Pagination} from '../../../shared/components/pagination';
+import {paginationSelectors} from '../../../shared/model/store/pagination/pagination.selectors';
+import {nextPage} from '../../../shared/model/store/pagination/pagination.slice';
 import {useAppDispatch} from '../../../shared/model/store/store';
 import {uploadSelectors} from '../../../shared/model/store/upload/upload.selectors';
 import {uploadImages} from '../../../shared/model/store/upload/upload.thunk';
-import {Button} from '../../../shared/ui/button';
 import {Chip} from '../../../shared/ui/chip';
 import {Typography} from '../../../shared/ui/typography';
 import {Upload} from '../../../shared/ui/upload';
@@ -42,7 +43,8 @@ export const UploadPage = () => {
   const dispatch = useAppDispatch();
   const loading = useSelector(uploadSelectors.selectUploadLoading);
   const error = useSelector(uploadSelectors.selectUploadError);
-
+  const page = useSelector(paginationSelectors.selectPaginationPage);
+  const totalPages = useSelector(paginationSelectors.selectPaginationTotal);
   const handleSubmitForm = async (data: FormData) => {
     const formData = new FormData();
 
@@ -61,6 +63,7 @@ export const UploadPage = () => {
 
       if (result) {
         navigate('/questions');
+        dispatch(nextPage());
       }
     } catch (error) {
       console.error('Ошибка при загрузке:', error);
@@ -106,22 +109,14 @@ export const UploadPage = () => {
           {error}
         </Typography>
       )}
-
-      <div className="upload-page__bottom">
-        <Typography
-          className="upload-page__bottom-text"
-          size="14"
-          weight="bold">
-          Шаг 1/3
-        </Typography>
-        <Button
-          form={id}
-          rightIcon={<RightIcon stroke={isValid ? 'white' : '#44537180'} />}
-          type="submit"
-          disabled={!isValid}>
-          {loading ? 'Отправка...' : 'Далее'}
-        </Button>
-      </div>
+      <Pagination
+        textNextButton="Далее"
+        totalPages={totalPages}
+        currentPage={page}
+        formId={id}
+        isDisabled={isValid}
+        loading={loading}
+      />
     </main>
   );
 };

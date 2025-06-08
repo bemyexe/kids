@@ -1,14 +1,22 @@
+import DatePicker from 'react-datepicker';
 import {useForm} from 'react-hook-form';
+import {useSelector} from 'react-redux';
+import {useNavigate} from 'react-router';
 import clsx from 'clsx';
 
+import {Pagination} from '../../../shared/components/pagination';
 import {RadioButtonGroup} from '../../../shared/components/radio-button-group';
 import {SectionQuestions} from '../../../shared/components/section-questions';
+import {paginationSelectors} from '../../../shared/model/store/pagination/pagination.selectors';
+import {prevPage} from '../../../shared/model/store/pagination/pagination.slice';
+import {useAppDispatch} from '../../../shared/model/store/store';
 import {Input} from '../../../shared/ui/input';
 import {TextArea} from '../../../shared/ui/textarea';
 import {Typography} from '../../../shared/ui/typography';
 import {RadioGroupController} from '../../../shared/view-model/radio-group-controller';
 
 import './style.scss';
+import 'react-datepicker/dist/react-datepicker.css';
 
 interface Props {
   className?: string;
@@ -43,10 +51,22 @@ export interface FormValues {
 }
 
 export const SurveyPage = ({className}: Props) => {
-  const {register, handleSubmit, control} = useForm<FormValues>({
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: {isValid},
+  } = useForm<FormValues>({
     mode: 'onChange',
   });
-
+  const page = useSelector(paginationSelectors.selectPaginationPage);
+  const totalPages = useSelector(paginationSelectors.selectPaginationTotal);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const handleClickPrevButton = () => {
+    dispatch(prevPage());
+    navigate('/upload');
+  };
   const onSubmit = (data: FormValues) => {
     console.log('Form data:', data);
   };
@@ -67,10 +87,23 @@ export const SurveyPage = ({className}: Props) => {
             label="Имя ребенка"
             {...register('childName', {required: true})}
           />
-          <Input
-            label="Дата рождения ребенка"
-            {...register('childDOB', {required: true})}
-          />
+          <RadioGroupController
+            name="childDOB"
+            control={control}
+            rules={{required: true}}>
+            {({value, onChange}) => (
+              <>
+                <Typography tag="p" size="16" weight="regular">
+                  Дата рождения ребенка
+                </Typography>
+                <DatePicker
+                  selected={value}
+                  onChange={onChange}
+                  dateFormat="dd.MM.yyyy"
+                />
+              </>
+            )}
+          </RadioGroupController>
           <RadioGroupController
             name="childGender"
             control={control}
@@ -348,7 +381,14 @@ export const SurveyPage = ({className}: Props) => {
           <TextArea label="Какие, на Ваш взгляд, области требуют особого внимания и развития у Вашего ребенка?" />
           <TextArea label="Обращались ли Вы ранее к специалистам (психологу, неврологу, логопеду) по поводу развития или поведения Вашего ребенка?" />
         </SectionQuestions>
-        <button type="submit">Отправить</button>
+        <Pagination
+          textPrevButton="К загрузке рисунков"
+          textNextButton={'Узнать результаты'}
+          currentPage={page}
+          totalPages={totalPages}
+          onClickPrevButton={handleClickPrevButton}
+          isDisabled={isValid}
+        />
       </form>
     </main>
   );

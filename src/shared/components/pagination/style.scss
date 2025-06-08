@@ -1,0 +1,13 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+
+  &__text {
+    color: var(--muted);
+  }
+
+  &__buttons-wrapper {
+    display: flex;
+    gap: 8px;
+  }
+}
