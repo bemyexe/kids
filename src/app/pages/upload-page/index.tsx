@@ -114,7 +114,7 @@ export const UploadPage = () => {
         totalPages={totalPages}
         currentPage={page}
         formId={id}
-        isDisabled={isValid}
+        isDisabled={!isValid}
         loading={loading}
       />
     </main>

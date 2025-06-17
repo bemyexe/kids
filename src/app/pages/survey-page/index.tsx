@@ -55,7 +55,7 @@ export const SurveyPage = ({className}: Props) => {
     register,
     handleSubmit,
     control,
-    formState: {isValid},
+    formState: {isValid, isSubmitting},
   } = useForm<FormValues>({
     mode: 'onChange',
   });
@@ -387,7 +387,7 @@ export const SurveyPage = ({className}: Props) => {
           currentPage={page}
           totalPages={totalPages}
           onClickPrevButton={handleClickPrevButton}
-          isDisabled={isValid}
+          isDisabled={!isValid || isSubmitting}
         />
       </form>
     </main>

@@ -63,7 +63,7 @@ export const Pagination = ({
             )
           }
           type={rightButtonType}
-          disabled={!isDisabled}
+          disabled={isDisabled}
           onClick={onClickNextButton}>
           {loading ? 'Отправка...' : textNextButton}
         </Button>
